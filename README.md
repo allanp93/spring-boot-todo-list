@@ -3,7 +3,9 @@
 ![Java](https://img.shields.io/badge/Java-17-blue)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.x-brightgreen)
 ![Security](https://img.shields.io/badge/Security-JWT-purple)
-![Status](https://img.shields.io/badge/Status-Completed-blue)
+![Status](https://img.shields.io/badge/Status-Work_In_Progress-yellow)
+![Build Status](https://img.shields.io/github/actions/workflow/status/seu-usuario/seu-repo/main.yml)
+![Last Commit](https://img.shields.io/github/last-commit/seu-usuario/seu-repo)
 
 ## 🎯 About The Project
 
