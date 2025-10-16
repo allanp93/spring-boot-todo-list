@@ -41,10 +41,10 @@ The main goal was to apply core backend development concepts, from creating endp
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/your-username/spring-boot-todo-api.git](https://github.com/your-username/spring-boot-todo-api.git)
+git clone [https://github.com/allanp93/spring-boot-todo-list.git](https://github.com/allanp93/spring-boot-todo-api.git)
 
 # 2. Navigate to the project directory
-cd spring-boot-todo-api
+cd spring-boot-todo-list
 
 # 3. Run the project using Maven
 ./mvnw spring-boot:run
