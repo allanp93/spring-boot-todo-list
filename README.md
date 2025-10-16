@@ -30,10 +30,10 @@ The main goal was to apply core backend development concepts, from creating endp
 -   **Language:** Java 17
 -   **Framework:** Spring Boot 3
 -   **Spring Modules:** Spring Web, Spring Security, Spring Data JPA
--   **Database:** H2 Database (or specify the one you used, e.g., PostgreSQL)
+-   **Database:** H2 Database and PostgreSQL
 -   **Authentication:** JSON Web Token (JWT)
 -   **Build Tool:** Maven
--   **Deployment:** The application is deployed on the Render platform. [Link to the deployed app, if available]
+-   **Deployment:** Deployment link available soon.
 
 ---
 
