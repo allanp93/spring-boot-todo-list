@@ -43,7 +43,7 @@ The main goal was to apply core backend development concepts, from creating endp
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/allanp93/spring-boot-todo-list.git](https://github.com/allanp93/spring-boot-todo-api.git)
+git clone https://github.com/allanp93/spring-boot-todo-list.git
 
 # 2. Navigate to the project directory
 cd spring-boot-todo-list
