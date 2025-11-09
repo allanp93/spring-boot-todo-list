@@ -1,7 +1,10 @@
 package com.sinaitech.todolist.filter;
+import at.favre.lib.crypto.bcrypt.BCrypt;
+import com.sinaitech.todolist.user.IUserRepository;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -10,6 +13,8 @@ import java.util.Base64;
 
 @Component
 public class FilterTaskAuth extends OncePerRequestFilter {
+    @Autowired IUserRepository userRepository;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
@@ -32,6 +37,22 @@ public class FilterTaskAuth extends OncePerRequestFilter {
         System.out.println(username);
         System.out.println(password);
 
-            filterChain.doFilter(request, response);
+        //validar usuario
+            var user = this.userRepository.findByUsername(username);
+            if(user == null){
+                response.sendError(401, "Usuário não encontrado");
+                return;
+            } else {
+                //Validar senha
+               var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
+                if(!passwordVerify.verified){
+                     response.sendError(401, "Senha inválida");
+                     return;
+                } else {
+                    filterChain.doFilter(request, response);
+                }
+            }
+
+
     }
 }
