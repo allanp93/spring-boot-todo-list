@@ -1,9 +1,11 @@
 package com.sinaitech.todolist.tasks;
 
+import com.sinaitech.todolist.utils.Utils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.config.Task;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -44,5 +46,25 @@ public class TaskController {
         var tasks = taskRepository.findByIdUser((UUID) idUser);
         return tasks;
 
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity update(@RequestBody TaskModel taskModel, HttpServletRequest request, @PathVariable UUID id) {
+        var task = this.taskRepository.findById(id).orElse(null);
+
+        if(task == null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Tarefa não encontrada");
+        }
+
+        var idUser = request.getAttribute("idUser");
+        if(!task.getIdUser().equals(idUser)){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Usuário não tem permissão para alterar essa task");
+        }
+
+        Utils.copyNonNullProperties(taskModel, task);
+        var taskUpdate = this.taskRepository.save(task);
+        return ResponseEntity.status(HttpStatus.OK).body(taskUpdate);
     }
 }
